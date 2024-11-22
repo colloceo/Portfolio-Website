@@ -6,38 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Collins Otieno - Full Stack Developer Portfolio">
     <title>Collins Otieno | Full Stack Developer</title>
-
-    <!-- Include Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Include Animate.css for animations -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
-    <!-- Internal CSS Styling -->
     <style>
-        /* General Reset */
+        /* General Styling */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Body */
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
+            background-color: #f4f4f4;
             color: #333;
-            background-color: #f4f7fc;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        /* Navbar Styling */
+        .dark-mode {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .dark-mode-toggle label {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Navbar */
         .navbar {
             background-color: #333;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 20px 0;
         }
 
         .navbar-container {
@@ -46,79 +61,65 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
         }
 
         .navbar .logo {
-            font-size: 1.8rem;
-            font-family: 'Montserrat', sans-serif;
             color: #fff;
-            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .nav-links {
-            list-style-type: none;
+            display: flex;
+            gap: 30px;
         }
 
         .nav-links li {
-            display: inline;
-            margin: 0 15px;
+            list-style: none;
         }
 
         .nav-links a {
-            text-decoration: none;
             color: #fff;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #ff6347;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         /* Hero Section */
         .hero-section {
-            background: #333 url('your-image.jpg') no-repeat center center/cover;
-            padding: 120px 0;
-            color: #fff;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            padding: 120px 20px;
             text-align: center;
+            color: #fff;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
         .hero-content p {
             font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .typing-text {
-            font-size: 1.4rem;
-            font-weight: bold;
+            margin-bottom: 20px;
         }
 
         .cta-btn {
             background-color: #ff6347;
             color: #fff;
-            padding: 15px 30px;
+            padding: 10px 30px;
+            font-size: 1.2rem;
             border: none;
             cursor: pointer;
-            text-decoration: none;
-            font-size: 1rem;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-btn:hover {
-            background-color: #e53e33;
         }
 
         /* About Section */
         .about-section {
             padding: 80px 20px;
             background-color: #fff;
+            text-align: center;
         }
 
         .about-container {
@@ -128,65 +129,82 @@
 
         .row {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
             gap: 40px;
         }
 
         .col-left img {
-            width: 300px;
+            width: 250px;
             border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .col-right {
-            max-width: 700px;
+            flex: 1;
+            padding: 20px;
+            text-align: left;
         }
 
-        h2, h3 {
+        h2 {
             font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
             margin-bottom: 20px;
+            color: #333;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #444;
         }
 
         p {
+            font-size: 1.2rem;
             margin-bottom: 20px;
-            font-size: 1rem;
-            line-height: 1.6;
         }
 
-        .timeline ul {
+        .timeline {
             list-style-type: none;
+            padding-left: 0;
         }
 
         .timeline li {
+            font-size: 1.1rem;
             margin-bottom: 10px;
+        }
+
+        .timeline li::before {
+            content: '\2022';
+            font-size: 30px;
+            color: #ff6347;
         }
 
         /* Skills Section */
         .skills-section {
-            background-color: #f9f9f9;
+            background-color: #fff;
             padding: 80px 20px;
+            text-align: center;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
+            justify-items: center;
         }
 
         .skill-item {
-            background-color: #fff;
-            padding: 30px;
-            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            text-align: center;
         }
 
         .skill-item i {
             font-size: 3rem;
-            color: #333;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            color: #ff6347;
         }
 
         .skill-item h3 {
@@ -196,32 +214,23 @@
 
         .skill-item p {
             font-size: 1rem;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-10px);
-        }
-
-        @media (max-width: 768px) {
-            .skills-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            color: #777;
         }
 
         /* Projects Section */
         .projects-section {
             padding: 80px 20px;
-            background-color: #fff;
+            background-color: #f4f4f4;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .project-item {
-            background-color: #f4f7fc;
+            background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -231,108 +240,74 @@
         .project-item img {
             width: 100%;
             border-radius: 10px;
-            height: auto;
             margin-bottom: 15px;
         }
 
         .project-item h3 {
             font-size: 1.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        .project-item p {
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-
-        .project-item .btn {
+        .btn {
             background-color: #ff6347;
             color: #fff;
             padding: 10px 20px;
-            text-decoration: none;
-            font-size: 1rem;
+            border: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            font-size: 1.1rem;
+            text-transform: uppercase;
         }
 
-        .project-item .btn:hover {
-            background-color: #e53e33;
-        }
-
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Testimonials Section */
-        .testimonials-section {
-            padding: 80px 20px;
-            background-color: #f9f9f9;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .testimonial-item {
+        /* Contact Section */
+        .contact-section {
             background-color: #fff;
-            padding: 30px;
+            padding: 80px 20px;
             text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .testimonial-item p {
+        .contact-section input,
+        .contact-section textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
             font-size: 1rem;
-            margin-bottom: 20px;
         }
 
-        .testimonial-item h4 {
+        .contact-section button {
+            background-color: #ff6347;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
             font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 5px;
+            cursor: pointer;
         }
 
-        .testimonial-item i {
-            font-size: 1.5rem;
-            color: #ff6347;
-        }
-
-        @media (max-width: 768px) {
-            .testimonials-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        /* Footer Styling */
+        /* Footer */
         .footer {
             background-color: #333;
             color: #fff;
-            padding: 40px 20px;
             text-align: center;
-        }
-
-        .footer h3 {
-            margin-bottom: 20px;
+            padding: 20px;
         }
 
         .social-links a {
+            margin: 0 10px;
             color: #fff;
-            font-size: 2rem;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            color: #ff6347;
+            font-size: 1.5rem;
         }
     </style>
 </head>
 
 <body>
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <input type="checkbox" id="dark-mode-switch">
+        <label for="dark-mode-switch">🌙</label>
+    </div>
+
     <!-- Navbar Section -->
     <nav class="navbar">
         <div class="navbar-container">
@@ -342,7 +317,6 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -350,11 +324,11 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="hero-content animate__animated animate__fadeIn">
+        <div class="hero-content">
             <h1>Hi, I'm Collins Otieno</h1>
             <p>Full Stack Developer | Building Dynamic Web Applications</p>
-            <p class="typing-text">I specialize in <span id="typed"></span></p>
-            <a href="#projects" class="cta-btn">See My Work</a>
+            <p class="typing-text">I specialize in <span id="typing-text">React, Node.js, MongoDB, Express</span></p>
+            <a href="#contact" class="cta-btn">Let's Talk</a>
         </div>
     </section>
 
@@ -363,16 +337,19 @@
         <div class="about-container">
             <div class="row">
                 <div class="col-left">
-                    <img src="profile.jpg" alt="Collins Otieno">
+                    <img src="profile.jpg" alt="Collins Otieno" class="profile-img">
                 </div>
                 <div class="col-right">
                     <h2>About Me</h2>
-                    <p>Hello! I'm a passionate Full Stack Developer with a focus on creating beautiful and functional web applications.</p>
-                    <h3>Experience</h3>
-                    <ul class="timeline">
-                        <li>Developed multiple full-stack web applications using React, Node.js, and MongoDB.</li>
-                        <li>Worked with various teams to deliver scalable and maintainable software solutions.</li>
-                    </ul>
+                    <p>I'm a Full Stack Developer from Nairobi, Kenya, passionate about solving problems through innovative software solutions. I enjoy building fast, scalable web applications with the latest technologies.</p>
+                    <p>With a deep interest in both the front-end and back-end of web development, I specialize in creating dynamic, responsive web applications using the MERN stack (MongoDB, Express, React, Node.js).</p>
+                    <div class="timeline">
+                        <h3>My Journey</h3>
+                        <ul>
+                            <li><strong>2019 - Present:</strong> Full Stack Developer | Freelance</li>
+                            <li><strong>2016 - 2019:</strong> Bachelor's in Computer Science | University of Nairobi</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -381,22 +358,47 @@
     <!-- Skills Section -->
     <section id="skills" class="skills-section">
         <div class="container">
-            <h2>My Skills</h2>
+            <h2>Skills</h2>
             <div class="skills-grid">
                 <div class="skill-item">
                     <i class="fab fa-react"></i>
                     <h3>React</h3>
-                    <p>Building fast and dynamic user interfaces.</p>
+                    <p>Advanced</p>
                 </div>
                 <div class="skill-item">
-                    <i class="fab fa-node-js"></i>
+                    <i class="fab fa-node"></i>
                     <h3>Node.js</h3>
-                    <p>Backend development with scalable solutions.</p>
+                    <p>Advanced</p>
                 </div>
                 <div class="skill-item">
                     <i class="fas fa-database"></i>
                     <h3>MongoDB</h3>
-                    <p>Database management and design.</p>
+                    <p>Intermediate</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML5</h3>
+                    <p>Advanced</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS3</h3>
+                    <p>Advanced</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <p>Advanced</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-android"></i>
+                    <h3>Android Development</h3>
+                    <p>Intermediate</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Graphic Design</h3>
+                    <p>Intermediate</p>
                 </div>
             </div>
         </div>
@@ -408,40 +410,16 @@
             <h2>My Projects</h2>
             <div class="projects-grid">
                 <div class="project-item">
-                    <img src="project1.jpg" alt="Project 1">
-                    <h3>Project One</h3>
-                    <p>A full-stack application built with React and Node.js.</p>
-                    <a href="https://github.com/yourusername/project1" class="btn">View on GitHub</a>
+                    <img src="project1.jpg" alt="Project 1" class="project-img">
+                    <h3>E-commerce Platform</h3>
+                    <p>A scalable e-commerce platform built with React and Node.js.</p>
+                    <a href="https://github.com/your-repo" target="_blank" class="btn">View Project</a>
                 </div>
                 <div class="project-item">
-                    <img src="project2.jpg" alt="Project 2">
-                    <h3>Project Two</h3>
-                    <p>A responsive e-commerce website with integrated payment gateway.</p>
-                    <a href="https://github.com/yourusername/project2" class="btn">View on GitHub</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials-section">
-        <div class="container">
-            <h2>What People Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-item">
-                    <p>"Collins is a highly skilled developer. He delivered my project ahead of schedule and exceeded my expectations!"</p>
-                    <h4>John Doe</h4>
-                    <i class="fas fa-quote-left"></i>
-                </div>
-                <div class="testimonial-item">
-                    <p>"I've worked with Collins on several projects, and his attention to detail and problem-solving abilities are exceptional."</p>
-                    <h4>Jane Smith</h4>
-                    <i class="fas fa-quote-left"></i>
-                </div>
-                <div class="testimonial-item">
-                    <p>"Collins has a great work ethic and always communicates effectively. His skills are top-notch."</p>
-                    <h4>Sarah Lee</h4>
-                    <i class="fas fa-quote-left"></i>
+                    <img src="project2.jpg" alt="Project 2" class="project-img">
+                    <h3>Blog Platform</h3>
+                    <p>A dynamic blog platform built with MongoDB, Express, and React.</p>
+                    <a href="https://github.com/your-repo" target="_blank" class="btn">View Project</a>
                 </div>
             </div>
         </div>
@@ -451,35 +429,44 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <h2>Contact Me</h2>
-            <form action="#" method="POST">
+            <form action="submit_form.php" method="POST">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <textarea name="message" placeholder="Your Message" required></textarea>
                 <button type="submit" class="cta-btn">Send Message</button>
             </form>
         </div>
     </section>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Collins Otieno. All Rights Reserved.</p>
-        <div class="social-links">
-            <a href="https://github.com/yourusername" target="_blank" class="fab fa-github"></a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" class="fab fa-linkedin"></a>
+        <div class="container">
+            <p>&copy; 2024 Collins Otieno | Full Stack Developer</p>
+            <div class="social-links">
+                <a href="https://github.com/your-profile" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
         </div>
     </footer>
 
-    <!-- Typed.js for Typing Effect -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
+        // Typing effect
         var options = {
-            strings: ["React", "Node.js", "MongoDB", "JavaScript", "Web Development"],
+            strings: ["React", "Node.js", "MongoDB", "Express", "JavaScript"],
             typeSpeed: 100,
             backSpeed: 50,
-            backDelay: 1500,
+            backDelay: 2000,
             loop: true
         };
-        var typed = new Typed("#typed", options);
+        var typed = new Typed("#typing-text", options);
+
+        // Dark Mode Toggle
+        const darkModeSwitch = document.getElementById('dark-mode-switch');
+        darkModeSwitch.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+        });
     </script>
 </body>
 
