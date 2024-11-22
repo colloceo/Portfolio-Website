@@ -1,643 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Collins Otieno, portfolio, Collins, full stack dev, personal portfolio lifecodes, portfolio design, portfolio website, personal portfolio" />
     <meta name="description" content="Welcome to Collins's Portfolio. Full-Stack Web Developer and Android App Developer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon -->
     <link id='favicon' rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-png">
     <title>Portfolio | Collins Otieno</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        /* Navbar */
-        header {
-            background: #333;
-            color: #fff;
-            padding: 20px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-        }
-
-        .logo {
-            color: #fff;
-            font-size: 30px;
-            padding-left: 20px;
-            font-weight: bold;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        .navbar ul {
-            display: flex;
-            list-style-type: none;
-        }
-
-        .navbar ul li {
-            margin-left: 30px;
-        }
-
-        .navbar ul li a {
-            color: #fff;
-            font-size: 16px;
-            text-transform: uppercase;
-        }
-
-        .navbar ul li a:hover {
-            color: #00aaff;
-        }
-
-        /* Hero Section */
-        .home {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #333;
-            color: #fff;
-            position: relative;
-        }
-
-        .home .content {
-            text-align: center;
-            z-index: 1;
-        }
-
-        .home .content h2 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-
-        .home .content p {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-
-        .home .content .btn {
-            background-color: #00aaff;
-            padding: 10px 20px;
-            border-radius: 30px;
-            color: white;
-            font-size: 16px;
-            display: inline-flex;
-            align-items: center;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-        .home .content .btn i {
-            margin-left: 10px;
-        }
-
-        .home .image {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            z-index: 0;
-        }
-
-        .home .image img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 20px;
-            text-align: center;
-            background-color: #fff;
-        }
-
-        .about .heading {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        .about .heading span {
-            color: #00aaff;
-        }
-
-        .about .row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-        }
-
-        .about .image {
-            flex: 1;
-            max-width: 400px;
-            margin-right: 20px;
-        }
-
-        .about .image img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .about .content {
-            flex: 2;
-            text-align: left;
-        }
-
-        .about .content h3 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        .about .content .tag {
-            color: #00aaff;
-            font-size: 18px;
-        }
-
-        .about .content p {
-            margin-top: 20px;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .about .resumebtn .btn {
-            background-color: #00aaff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 16px;
-            margin-top: 20px;
-            display: inline-flex;
-            align-items: center;
-            text-transform: uppercase;
-        }
-
-        .about .resumebtn .btn i {
-            margin-left: 10px;
-        }
-
-        /* Skills Section */
-        .skills {
-            padding: 80px 20px;
-            background-color: #f4f4f4;
-        }
-
-        .skills .heading {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-        }
-
-        .skills .heading span {
-            color: #00aaff;
-        }
-
-        .skills .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .skills .container .row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .skills .container .row .bar {
-            width: 200px;
-            margin: 15px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .skills .container .row .bar .info {
-            margin-top: 10px;
-        }
-
-        .skills .container .row .bar .info img {
-            width: 50px;
-            margin-bottom: 10px;
-        }
-
-        .skills .container .row .bar .info span {
-            font-size: 16px;
-            color: #333;
-        }
-
-        /* Education Section */
-        .education {
-            padding: 80px 20px;
-            background-color: #fff;
-        }
-
-        .education .heading {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        .education .heading span {
-            color: #00aaff;
-        }
-
-        .education .qoute {
-            text-align: center;
-            font-style: italic;
-            margin-bottom: 50px;
-        }
-
-        .education .box-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .education .box-container .box {
-            width: 22%;
-            margin-bottom: 30px;
-            text-align: center;
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .education .box-container .box .image img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .education .box-container .box .content h3 {
-            font-size: 22px;
-            margin-top: 20px;
-        }
-
-        .education .box-container .box .content p {
-            margin-top: 10px;
-            font-size: 16px;
-        }
-
-        .education .viewall .btn {
-            background-color: #00aaff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 16px;
-            margin-top: 30px;
-            display: inline-flex;
-            align-items: center;
-            text-transform: uppercase;
-        }
-
-        .education .viewall .btn i {
-            margin-left: 10px;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 20px;
-            background-color: #f4f4f4;
-        }
-
-        .contact .heading {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-        }
-
-        .contact .heading span {
-            color: #00aaff;
-        }
-
-        .contact .container {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .contact .container .content {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .contact .container .content .image-box {
-            margin-bottom: 30px;
-        }
-
-        .contact .container .content form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .contact .container .content form input,
-        .contact .container .content form textarea {
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .contact .container .content form button {
-            background-color: #00aaff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        /* Footer Section */
-        .footer {
-            background-color: #333;
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .footer .box-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .footer .box-container .box {
-            width: 30%;
-            margin-bottom: 20px;
-        }
-
-        .footer .box-container .box h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .footer .box-container .box a {
-            color: #fff;
-            font-size: 16px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .footer .box-container .box .socials a {
-            margin-right: 15px;
-            font-size: 24px;
-        }
-
-        .footer .credit {
-            font-size: 14px;
-            margin-top: 30px;
-        }
-
-        .footer .credit a {
-            color: #fff;
-        }
-
-        /* Responsive Design */
-        @media screen and (max-width: 768px) {
-            .about .row {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .about .image {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-
-            .skills .container .row {
-                flex-direction: column;
-            }
-
-            .education .box-container {
-                flex-direction: column;
-            }
-
-            .footer .box-container {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
 </head>
+<body oncontextmenu="return false">
 
-<body>
-    <!-- Header -->
-    <header>
-        <div class="logo">Collins Otieno</div>
-        <div class="navbar">
+<!-- pre loader -->
+<!-- <div class="loader-container">
+  <img draggable="false" src="./assets/images/preloader.gif" alt="">
+</div> -->
+
+<!-- navbar starts -->
+<header>
+        <a href="/" class="logo"><i class="fab fa-node-js"></i> Collins</a>
+
+        <div id="menu" class="fas fa-bars"></div>
+        <nav class="navbar">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
             </ul>
-        </div>
-    </header>
+        </nav>
+</header>
+<!-- navbar ends -->
 
-    <!-- Hero Section -->
-    <section id="home" class="home">
-        <div class="content">
-            <h2>Hello, I'm Collins</h2>
-            <p class="typing-text"></p>
-            <a href="#contact" class="btn">Contact Me <i class="fa fa-arrow-right"></i></a>
+
+<!-- hero section starts -->
+<section class="home" id="home">
+    <div id="particles-js"></div>
+
+    <div class="content">
+    <h2>Hi There,<br/> I'm Colins <span>Otieno</span></h2>
+    <p>i am into <span class="typing-text"></span></p>
+    <a href="#about" class="btn"><span>About Me</span>
+      <i class="fas fa-arrow-circle-down"></i>
+    </a>
+    <div class="socials">
+        <ul class="social-icons">
+          <li><a class="linkedin" aria-label="LinkedIn" href="" target="_blank"><i class="fab fa-linkedin"></i></a></li> 
+          <li><a class="github" aria-label="GitHub" href="" target="_blank"><i class="fab fa-github"></i></a></li>
+          <li><a class="twitter" aria-label="Twitter" href="https://x.com/collooceo?t=GRkjVHsbjPYsFX1cR4kLnw&s=09" target="_blank"><i class="fab fa-twitter"></i></a></li>
+          <li><a class="telegram" aria-label="Telegram" href="t.me/Colloceo" target="_blank"><i class="fab fa-telegram-plane"></i></a></li>
+          <li><a class="instagram" aria-label="Instagram" href="https://www.instagram.com/invites/contact/?igsh=cG01Zzg5NnM0eTFv&utm_content=u4lmw6v"><i class="fab fa-instagram" target="_blank"></i></a></li>
+          <li><a class="dev" aria-label="Dev" href="" target="_blank"><i class="fab fa-dev"></i></a></li>
+        </ul>
+      </div>
+    </div>
+<div class="image">
+     <img draggable="false" class="tilt" src="./assets/images/hero.png" alt="">
+</div>
+</section>
+<!-- hero section ends -->
+
+
+<!-- about section starts -->
+<section class="about" id="about">
+    <h2 class="heading"><i class="fas fa-user-alt"></i> About <span>Me</span></h2>
+    
+    <div class="row">
+
+    <div class="image">
+        <img>
+    </div>
+    <div class="content">
+        <h3>I'm Collins</h3>
+        <span class="tag">Full Stack Developer</span>
+        
+        <p>
+            I am a Full-Stack Developer based in Nairobi, Kenya, currently pursuing a degree in Communication and Computer Networks at The Technical University of Kenya. I am passionate about enhancing my coding skills and developing innovative applications and websites. My expertise lies in building Web Applications and Websites using the MERN Stack (MongoDB, Express.js, React, Node.js).
+At present, I work independently to refine my skills and enjoy creating Full-Stack clones of popular applications. Additionally, I have a strong background in Electrical and Electronics Engineering, allowing me to assess and resolve issues in electrical setups. This diverse skill set enables me to tackle challenges from both software and hardware perspectives, ensuring comprehensive solutions.
+        </p>
+        
+        <div class="box-container">
+            <!-- <div class="box">
+              <p><span> age: </span> 19</p>
+              <p><span> phone : </span>+254768581254</p>
+            </div> -->
+            <div class="box">
+              <p><span> email : </span> otienocollins0549@gmail.com</p>
+              <p><span> place : </span> Nairobi, Kenya</p>
+            </div>
         </div>
+        
+        <div class="resumebtn">
+            <a href="" target="_blank" class="btn"><span>Resume</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+    </div>
+    </div>
+</section>
+<!-- about section ends -->
+
+<!-- skills section starts -->
+<section class="skills" id="skills">
+
+    <h2 class="heading"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
+
+    <div class="container">
+          <div class="row" id="skillsContainer">
+
+            <!-- <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/adobe-xd.png"/>
+                <span>AdobeXD</span>
+              </div>
+            </div> -->
+
+      </div>
+</div>
+</section>
+<!-- skills section ends -->
+
+
+<!-- education section starts -->
+<section class="education" id="education">
+
+  <h1 class="heading"><i class="fas fa-graduation-cap"></i> My <span>Education</span></h1>
+
+    <p class="qoute">Education is not the learning of facts, but the training of the mind to think.</p>
+
+    <div class="box-container">
+
+    <div class="box">
         <div class="image">
-            <img src="assets/images/hero-image.png" alt="">
+        <img draggable="false" src="" alt="">
         </div>
-    </section>
+        <div class="content">
+        <h3>Kenya Certificate of Primary Education</h3>
+        <p>Karapul Primary School</p>
+        <h4>2014-2018 | Completed</h4>
+        </div>
+    </div>
+    
+    <div class="box">
+        <div class="image">
+        <img draggable="false" src="https://i.ytimg.com/vi/sJeeWN75c7U/maxresdefault.jpg" alt="">
+        </div>
+        <div class="content">
+        <h3>Kenya Certificate of Secondary Education</h3>
+        <p>Sawagongo Boys High School</p>
+        <h4>2019-2022 | Completed</h4>
+        </div>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="heading">
-            <h2>About Me</h2>
+    <div class="box">
+        <div class="image">
+        <img draggable="false" src="https://ayoma.co.ug/wp-content/uploads/2023/04/Technical-University-of-Kenya-3.jpg" alt="">
         </div>
-        <div class="row">
-            <div class="image">
-                <img src="assets/images/profile.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Collins Otieno</h3>
-                <div class="tag">Web Developer</div>
-                <p>I am a Full Stack Web Developer with a passion for creating intuitive and efficient user experiences.</p>
-                <div class="resumebtn">
-                    <a href="#" class="btn">Download Resume <i class="fa fa-download"></i></a>
-                </div>
-            </div>
+        <div class="content">
+        <h3>Bachelor of Technology Communication And Computer Networks</h3>
+        <p>The Technical University Of Kenya</p>
+        <h4>2023-2027 | Pursuing</h4>
         </div>
-    </section>
+    </div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="heading">
-            <h2>My Skills</h2>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="bar">
-                    <div class="info">
-                        <img src="assets/images/html5.png" alt="">
-                        <span>HTML</span>
-                    </div>
-                </div>
-                <div class="bar">
-                    <div class="info">
-                        <img src="assets/images/css3.png" alt="">
-                        <span>CSS</span>
-                    </div>
-                </div>
-                <div class="bar">
-                    <div class="info">
-                        <img src="assets/images/javascript.png" alt="">
-                        <span>JavaScript</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="box">
+      <div class="image">
+      <img draggable="false" src="https://th.bing.com/th/id/OIP.1b00QvFLZZylz6ky5npdrgHaEJ?rs=1&pid=ImgDetMain" alt="">
+      </div>
+      <div class="content">
+      <h3>Electronics And Electrical Installation with Solar</h3>
+      <p>St.Kizito</p>
+      <h4>2023-2024 | Completed</h4>
+      </div>
+    </div>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="heading">
-            <h2>Education</h2>
-        </div>
-        <div class="qoute">
-            <p>"Education is the most powerful weapon which you can use to change the world."</p>
-        </div>
-        <div class="box-container">
-            <div class="box">
-                <div class="image">
-                    <img src="assets/images/school1.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>University of Example</h3>
-                    <p>Bachelor of Science in Computer Science</p>
-                </div>
-            </div>
-            <div class="box">
-                <div class="image">
-                    <img src="assets/images/school2.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>Example College</h3>
-                    <p>Advanced Web Development Certificate</p>
-                </div>
-            </div>
-        </div>
-        <div class="viewall">
-            <a href="#" class="btn">View All Education <i class="fa fa-arrow-right"></i></a>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="heading">
-            <h2>Contact Me</h2>
+
+<div class="viewall">
+  <a href="/projects" class="btn"><span>View All</span>
+    <i class="fas fa-arrow-right"></i>
+</a>
+</div>
+
+</section>
+
+<section class="contact" id="contact">
+  
+  <h2 class="heading"><i class="fas fa-headset"></i> Get in <span>Touch</span></h2>
+
+  <div class="container">
+    <div class="content">
+      <div class="image-box">
+        <img draggable="false" src="./assets/images/contact1.png" alt="">
+      </div>
+    <form id="contact-form">
+      
+      <div class="form-group">
+        <div class="field">
+          <input type="text" name="name" placeholder="Name" required>
+          <i class='fas fa-user'></i>
         </div>
-        <div class="container">
-            <div class="content">
-                <div class="image-box">
-                    <img src="assets/images/contact.png" alt="">
-                </div>
-                <form id="contact-form">
-                    <input type="text" name="name" placeholder="Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="text" name="phone" placeholder="Phone">
-                    <textarea name="message" placeholder="Message" required></textarea>
-                    <button type="submit">Submit <i class="fa fa-paper-plane"></i></button>
-                </form>
-            </div>
+        <div class="field">
+          <input type="text" name="email" placeholder="Email" required>
+          <i class='fas fa-envelope'></i>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <section class="footer">
-        <div class="box-container">
-            <div class="box">
-                <h3>Collins's Portfolio</h3>
-                <p>Thank you for visiting my personal portfolio website.</p>
-            </div>
-            <div class="box">
-                <h3>Quick Links</h3>
-                <a href="#home"><i class="fas fa-chevron-circle-right"></i> Home</a>
-                <a href="#about"><i class="fas fa-chevron-circle-right"></i> About</a>
-                <a href="#skills"><i class="fas fa-chevron-circle-right"></i> Skills</a>
-                <a href="#education"><i class="fas fa-chevron-circle-right"></i> Education</a>
-                <a href="#contact"><i class="fas fa-chevron-circle-right"></i> Contact</a>
-            </div>
-            <div class="box">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-phone"></i>+254768581254</p>
-                <p><i class="fas fa-envelope"></i>otienocollins0549@gmail.com</p>
-                <div class="socials">
-                    <a href="" class="fa fa-twitter"></a>
-                    <a href="" class="fa fa-instagram"></a>
-                </div>
-            </div>
+        <div class="field">
+          <input type="text" name="phone" placeholder="Phone">
+          <i class='fas fa-phone-alt'></i>
         </div>
-        <h1 class="credit">Designed with <i class="fa fa-heart"></i> by <a href="#">Collins Otieno</a></h1>
-    </section>
+        <div class="message">
+        <textarea placeholder="Message" name="message" required></textarea>
+        <i class="fas fa-comment-dots"></i>
+        </div>
+        </div>
+      <div class="button-area">
+        <button type="submit">
+          Submit <i class="fa fa-paper-plane"></i></button>
+      </div>
+    </form>
+  </div>
+  </div>
+</section>
+<!-- contact section ends -->
 
-    <!-- JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://unpkg.com/vanilla-tilt.js"></script>
-    <script>
-        // Particle.js initialization
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 50 },
-                color: { value: "#00aaff" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3 }
-            },
-            interactivity: {
-                events: { onhover: { enable: true, mode: "repulse" } }
-            }
-        });
 
-        // Typed.js animation for typing text
-        const options = {
-            strings: ["Web Development", "Mobile Apps", "UX/UI Design"],
-            typeSpeed: 100,
-            backSpeed: 100,
-            backDelay: 2000,
-            loop: true,
-        };
+<!-- footer section starts -->
+<section class="footer">
 
-        const typed = new Typed(".typing-text", options);
+  <div class="box-container">
 
-        // VanillaTilt effect
-        VanillaTilt.init(document.querySelectorAll(".tilt"), {
-            max: 15,
-            speed: 400
-        });
-    </script>
+      <div class="box">
+          <h3>Collins's Portfolio</h3>
+          <p>Thank you for visiting my personal portfolio website. Connect with me over socials. <br/> <br/> Keep Rising 🚀. Connect with me over live chat!</p>
+      </div>
+
+      <div class="box">
+          <h3>quick links</h3>
+          <a href="#home"><i class="fas fa-chevron-circle-right"></i> home</a>
+          <a href="#about"><i class="fas fa-chevron-circle-right"></i> about</a>
+          <a href="#skills"><i class="fas fa-chevron-circle-right"></i> skills</a>
+          <a href="#education"><i class="fas fa-chevron-circle-right"></i> education</a>
+          <a href="#work"><i class="fas fa-chevron-circle-right"></i> work</a>
+          <a href="#experience"><i class="fas fa-chevron-circle-right"></i> experience</a>
+      </div>
+
+      <div class="box">
+          <h3>contact info</h3>
+          <p> <i class="fas fa-phone"></i>+254768581254</p>
+          <p> <i class="fas fa-envelope"></i>otienocollins0549@gmail.com</p>
+          <p> <i class="fas fa-map-marked-alt"></i>Nairobi, Kenya</p>
+          <div class="share">
+
+              <a href="" class="fab fa-linkedin" aria-label="LinkedIn" target="_blank"></a>
+              <a href="https://github.com/colloceo" class="fab fa-github" aria-label="GitHub" target="_blank"></a>
+              <a href="mailto: otienocollins0549@gmail.com" class="fas fa-envelope" aria-label="Mail" target="_blank"></a>
+              <a href="" class="fab fa-twitter" aria-label="Twitter" target="_blank"></a>
+              <a href="" class="fab fa-telegram-plane" aria-label="Telegram" target="_blank"></a>
+          </div>
+      </div>
+  </div>
+
+  <h1 class="credit">Designed with <i class="fa fa-heart pulse"></i> by <a href=""> Collins Otieno</a></h1>
+
+</section>
+<!-- footer section ends -->
+
+
+<!-- scroll top btn -->
+<a href="#home" aria-label="ScrollTop" class="fas fa-angle-up" id="scroll-top"></a>
+<!-- scroll back to top -->
+
+
+<!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
+<!-- jquery cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- typed.js cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js" integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- particle.js links -->
+<script src="./assets/js/particles.min.js"></script>
+<script src="./assets/js/app.js"></script>
+
+<!-- vanilla tilt.js links -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" integrity="sha512-SttpKhJqONuBVxbRcuH0wezjuX+BoFoli0yPsnrAADcHsQMW8rkR84ItFHGIkPvhnlRnE2FaifDOUw+EltbuHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- scroll reveal anim -->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+    ></script>
+
+<!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
+
+<script src="./assets/js/script.js"></script>
+
 </body>
-
 </html>
