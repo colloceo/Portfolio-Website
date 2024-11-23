@@ -191,7 +191,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
     <script>
-        emailjs.init('YOUR_USER_ID'); // Initialize EmailJS with your user ID
+        emailjs.init('mLoVBJ2RYpRC8ALnc'); // Initialize EmailJS with your user ID
 
         document.getElementById('contact-form').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent default form submission
@@ -203,7 +203,7 @@
             var message = document.querySelector("textarea[name='message']").value;
 
             // Send data to EmailJS
-            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+            emailjs.send("service_psvdxyf", "template_q1ky2ak", {
                 from_name: name,      // The name the user entered
                 email: email,         // The user's email
                 phone: phone,         // The user's phone (optional)
