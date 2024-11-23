@@ -212,18 +212,23 @@ header #menu {
     gap: 2rem;
 }
 
-/* Skills Section */
-.skills {
-    padding: 5rem 5%;
+/* Projects Section */
+.work .box {
     background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+    height: 300px; /* Set a fixed height for the box */
 }
 
-.skills .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.work .box img {
+    width: 100%; /* Make the image take full width of the box */
+    height: 200px; /* Set a fixed height for the images */
+    object-fit: cover; /* Cover the box while maintaining aspect ratio */
 }
 
+/* Skills Section */
 .skills .bar {
     width: 100%;
     background: #e0e0e0;
@@ -232,84 +237,11 @@ header #menu {
     position: relative;
 }
 
-.skills .bar .info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-}
-
 .skills .bar .info img {
-    width: 40px;
-    height: 40px;
-    margin-right: 1rem;
+    width: 50px; /* Set a fixed width for skill icons */
+    height: 50px; /* Set a fixed height for skill icons */
+    object-fit: cover; /* Maintain aspect ratio */
 }
-
-.skills .bar .info span {
-    font-size: 1.6rem;
-    font-weight: 600;
-}
-
-/* Projects Section */
-.work {
-    padding: 5rem 5%;
-}
-
-.work .box-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.work .box {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s;
-}
-
-.work .box:hover {
-    transform: translateY(-5px);
-}
-
-.work .box img {
-    width: 100%;
-    height: auto;
-}
-
-.work .content {
-    padding: 1.5rem;
-}
-
-.work .content .tag h3 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-}
-
-.work .content .desc p {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-}
-
-.work .content .btns {
-    display: flex;
-    justify-content: space-between;
-}
-
-.work .content .btn {
-    padding: 0.8rem 1.5rem;
-    background: #2b3dda;
-    color: #fff;
-    border-radius: 5px;
-    font-size: 1.4rem;
-    transition: background 0.3s;
-}
-
-.work .content .btn:hover {
-    background: #fc8c05;
-}
-
 /* Contact Section */
 .contact {
     padding: 5rem 5%;
