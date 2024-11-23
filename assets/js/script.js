@@ -74,9 +74,12 @@ $(document).ready(function () {
             "web designing", 
             "android development", 
             "web development", 
-            "database designing", 
+            "database designing",
+            "database management",
             "graphics designing", 
-            "electrical installation"
+            "electrical installation",
+            "solar installation",
+            "machines"
         ],
         loop: true,
         typeSpeed: 50,
