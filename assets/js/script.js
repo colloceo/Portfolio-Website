@@ -170,7 +170,7 @@ $(document).ready(function () {
             return false;
         }
     };
-/*
+
     // Start Tawk.to live chat
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function () {
@@ -182,4 +182,4 @@ $(document).ready(function () {
         s0.parentNode.insertBefore(s1, s0);
     })();
 });
-*/
+
